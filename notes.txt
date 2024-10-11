@@ -58,3 +58,95 @@ useState -- > is a hook, useState(0) that 0 is a entry value,
 setCount(count + 1) => value increase,
 'setCount(count + 1)
 setCount(count + 1)' => value will not increase twice because it knows as patching, how to fix,  this that method accept a callback, so setCount(prevCounter => prevCounter + 1) -> it knows the previous value. 
+
+
+#lecture7
+
+Before React Fiber, React's rendering was synchronous, meaning it would handle all updates in a single block, which could cause lags or jank, especially when dealing with complex or animated components. After React Fiber, React introduced priority-based rendering. It allows React to give higher priority to important updates (like animations or user inputs), making the web page feel more smooth and responsive
+
+Let’s break down the core concepts of **React**, **Virtual DOM (vDOM)**, **Reconciliation**, and **Trees** in a super simple way, using analogies and examples that even a child could understand!
+
+### 1. **What is the DOM?**
+Imagine the **DOM (Document Object Model)** as a **big tree**. The tree is made up of different parts like leaves, branches, and the trunk. These parts represent the elements on a web page like buttons, text, images, etc.
+
+- The **leaves** might be the smallest elements like text.
+- The **branches** are bigger parts like divs or sections.
+- The **trunk** is the whole structure, the body of your HTML.
+
+When you make a change on the web page (like clicking a button), the tree has to be **updated**. In the past, browsers had to update the entire tree every time a small change happened. This could be **slow**.
+
+---
+
+### 2. **What is the Virtual DOM (vDOM)?**
+The **vDOM** is like a **picture** of the real tree (DOM). Imagine you draw a **copy** of the tree on paper. Instead of messing with the actual tree every time, you first make changes on the picture (vDOM).
+
+- The **vDOM** is faster because it's like drawing and erasing on paper without touching the real tree.
+- Once all the changes are done on the **vDOM**, React compares the **picture** with the **real tree** and decides exactly what needs to be updated in the real DOM.
+
+So, with the **vDOM**, only the specific parts of the tree that have changed get updated, making it much faster and efficient.
+
+---
+
+### 3. **What is Reconciliation?**
+Now, when you draw a new picture on paper (vDOM), React has to figure out what’s different between your old picture and the new picture. This process of comparing the two trees (old and new vDOM) and figuring out what has changed is called **Reconciliation**.
+
+### Let’s pretend:
+- You have two pictures of a tree. One has **red leaves** and the other has **green leaves**.
+- You compare both pictures and say, "Ah! Only the color of the leaves has changed!"
+
+Instead of replanting a whole new tree, React will just **change the color of the leaves** (the small part that needs to change). This makes the process **super fast** because React doesn’t mess with the rest of the tree!
+
+**Reconciliation** is React’s clever way of **finding differences** and making only necessary updates to the real DOM.
+
+---
+
+### 4. **Trees in React**
+React represents everything on your web page (like buttons, text, divs) as a **tree structure**. Each element is like a **node** in this tree.
+
+### Imagine:
+- The **root** of the tree is the big container of your web page (like `<div id="root">`).
+- Each **branch** is an HTML element like `<div>`, `<p>`, `<h1>`.
+- The **leaves** are the smallest pieces like text or buttons.
+
+Just like a tree grows by adding branches and leaves, React builds the structure of your web page by adding nodes (elements) to the **React Tree**.
+
+---
+
+### 5. **How does React handle updates efficiently?**
+Let’s say you change something on your web page, like updating the text of a button from "Click Me" to "Clicked!".
+
+Without React:
+- The browser would try to update the entire tree (DOM), which is slow.
+
+With React:
+1. React creates a **new vDOM** with the updated text.
+2. React compares this new vDOM with the old one using **Reconciliation**.
+3. React finds that only the text inside the button has changed.
+4. It tells the real DOM, “Hey, just update this small part (the text)!”
+
+This way, React only changes what needs to be changed, keeping things **fast and smooth**.
+
+---
+
+### 6. **Why is React Fiber important?**
+Before **React Fiber**, when you made a lot of changes, React had to complete all updates in one go. If you added something like **animations**, the page could become slow because React would take time to update the whole tree at once.
+
+With **React Fiber**:
+- React breaks down the updates into **small chunks**.
+- It **prioritizes** what needs to be updated first. For example, it gives priority to animations or user inputs.
+- This makes sure that even with a lot of changes, the page stays **fast and responsive**.
+
+---
+
+### Summary: Let’s Review with Analogies!
+1. **DOM** is like a **tree** where every part of the page (text, images, buttons) is a **branch or leaf**.
+2. **Virtual DOM (vDOM)** is like a **drawing** of that tree. React updates the drawing first, and only after that, it updates the real tree.
+3. **Reconciliation** is when React **compares** the old and new drawings and updates only what has changed (e.g., just a leaf, not the whole tree).
+4. **React Tree** is how React organizes the elements in a tree-like structure, with the root at the top and branches for each component.
+5. **React Fiber** helps React work faster by breaking updates into small pieces and **prioritizing** important updates, like animations.
+
+React is a **clever gardener** that waters only the leaves that need water, without wasting time on the whole tree!
+
+---
+
+Does this help you understand React and its core concepts more clearly?
