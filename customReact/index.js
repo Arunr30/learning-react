@@ -1,17 +1,3 @@
-#letcure-1 => launch video
-#letcure-2 => roadmap
-#letcure-3 => learnt about create react app, vite -> bundler, also we can use parcel, dev dependecies
-
-#letcure-4 => folder structure, spa-> single page application, 
-
-npm run dev --> to start our vite application
-if we write more than one statement we need to wrap into a div.
-file name should be .jsx, file name should start with xapital letter
-
-if we are calling javascript in our react we have to wrap up in curly braces
-
-#letcure-5 --> react render method takes only one method,
-
 function customRender(reactElement, container) {
     // create the element,
     const domElement = document.createElement(reactElement.type)
@@ -42,6 +28,3 @@ const reactElement = {
 const mainContainer = document.getElementById("root")
 
 customRender(reactElement, mainContainer)
-
-
-way of creating our own react!
