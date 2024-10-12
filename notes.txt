@@ -150,3 +150,17 @@ React is a **clever gardener** that waters only the leaves that need water, with
 ---
 
 Does this help you understand React and its core concepts more clearly?
+
+
+
+#lecture8
+
+installing tailwind,
+
+1. go to tailwind page
+2. choose vite from framework guide
+3. then pick install contents post in tailwind config
+4. then contents
+5. pick utilities where we fixed in settings of vs code unknown and all set
+
+props -> properties,  we can pass the value through props
